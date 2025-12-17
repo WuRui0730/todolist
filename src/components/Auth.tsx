@@ -1,3 +1,7 @@
+/**
+ * 文件功能：认证面板组件
+ * 提供用户登录和注册的表单界面，处理用户输入和模式切换。
+ */
 import type { Dispatch, SetStateAction } from 'react'
 import type { User } from '../types'
 
@@ -17,6 +21,11 @@ type Props = {
   users: User[]
 }
 
+// [PPT Slide 4] 身份认证系统 - 登录/注册界面组件
+/**
+ * 认证面板组件
+ * 处理用户登录和注册逻辑
+ */
 export function AuthPanel({ mode, authForm, setAuthForm, authError, onLogin, onRegister }: Props) {
   return (
     <div className="auth">

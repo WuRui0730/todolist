@@ -1,3 +1,7 @@
+/**
+ * 文件功能：日期选择器
+ * 自定义日历组件，支持按月切换和日期选择，用于设置任务截止时间或生日。
+ */
 import { useState, useRef, useEffect } from 'react'
 
 interface DatePickerProps {
@@ -7,6 +11,10 @@ interface DatePickerProps {
   max?: string
 }
 
+/**
+ * 日期选择器组件
+ * 支持按月切换、选择日期，可设置最大可选日期
+ */
 export function DatePicker({ value, onChange, placeholder, max }: DatePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [currentMonth, setCurrentMonth] = useState(new Date())

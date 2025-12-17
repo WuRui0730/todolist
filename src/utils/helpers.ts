@@ -1,11 +1,21 @@
+/**
+ * 文件功能：通用工具函数
+ * 提供日期格式化、颜色转换、倒计时计算等通用的辅助函数。
+ */
 import type { Importance } from '../types'
 
+/**
+ * 将 HEX 颜色转换为 RGB 对象
+ */
 export function hexToRgb(hex: string) {
   const val = hex.replace('#', '')
   const num = parseInt(val.length === 3 ? val.split('').map((c) => c + c).join('') : val, 16)
   return { r: (num >> 16) & 255, g: (num >> 8) & 255, b: num & 255 }
 }
 
+/**
+ * 应用主题色到 CSS 变量
+ */
 export function applyTheme(primary: string) {
   const root = document.documentElement
   const { r, g, b } = hexToRgb(primary)
@@ -13,6 +23,10 @@ export function applyTheme(primary: string) {
   root.style.setProperty('--theme-primary-light', `rgba(${r}, ${g}, ${b}, 0.2)`)
 }
 
+/**
+ * 格式化日期显示
+ * @returns "M月D日 HH:mm"
+ */
 export function formatDate(d?: string) {
   if (!d) return '无截止时间'
   const date = new Date(d)
@@ -22,6 +36,10 @@ export function formatDate(d?: string) {
     .padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`
 }
 
+/**
+ * 获取简单的倒计时文本
+ * @returns "剩余 X小时X分" 或 "超时 X小时X分"
+ */
 export function getCountdown(d?: string) {
   if (!d) return '未设置'
   const diff = new Date(d).getTime() - Date.now()
@@ -32,12 +50,18 @@ export function getCountdown(d?: string) {
   return `${prefix} ${h}小时${m}分`
 }
 
+/**
+ * 简单的字符串哈希函数，用于生成索引
+ */
 export function hashIndex(str: string, mod: number) {
   let hash = 0
   for (let i = 0; i < str.length; i++) hash = (hash << 5) - hash + str.charCodeAt(i)
   return Math.abs(hash) % mod
 }
 
+/**
+ * 判断日期是否是今天
+ */
 export function isToday(d?: string) {
   if (!d) return false
   const date = new Date(d)
@@ -49,6 +73,9 @@ export function isToday(d?: string) {
   )
 }
 
+/**
+ * 判断日期是否在未来7天内
+ */
 export function isWithin7Days(d?: string) {
   if (!d) return false
   const date = new Date(d).getTime()
@@ -57,6 +84,9 @@ export function isWithin7Days(d?: string) {
   return diff >= 0 && diff <= 7 * 24 * 3600 * 1000
 }
 
+/**
+ * 获取详细的倒计时文本 (天/时/分)
+ */
 export function getCountdownDHM(d?: string, currentTime?: number) {
   if (!d) return ''
   const now = currentTime || Date.now()
@@ -82,6 +112,9 @@ export function getCountdownDHM(d?: string, currentTime?: number) {
   }
 }
 
+/**
+ * 重要性对应的颜色映射
+ */
 export const importanceColor: Record<Importance, string> = {
   critical: '#e66b6b',
   high: '#f5c26b',

@@ -1,5 +1,12 @@
+/**
+ * 文件功能：常量配置
+ * 存储应用中的静态数据、默认配置、图标映射和主题预设等。
+ */
 import type { Group, Profile, Settings, Task } from './types'
 
+/**
+ * 图标资源映射
+ */
 export const iconMap: Record<string, string> = {
   todo: '/images/icon/todo.png',
   count: '/images/icon/count.png',
@@ -8,11 +15,17 @@ export const iconMap: Record<string, string> = {
   logout: '/images/icon/logout.png',
 }
 
+/**
+ * 主题色预设
+ */
 export const themePresets = ['#ffb7c5', '#a7c8ff', '#ffe8a1', '#c9b7ff', '#9ee6b8', '#1f1f1f']
 
 // 莫兰迪色系
 export const morandiColors = ['#93c5fd', '#fde68a', '#a7f3d0', '#fbbf24', '#86efac', '#fcd34d']
 
+/**
+ * 首页背景图列表
+ */
 export const homepageBackgrounds = [
   '/images/HomepageBackground/HomepageBackground1.png',
   '/images/HomepageBackground/HomepageBackground2.png',
@@ -21,6 +34,9 @@ export const homepageBackgrounds = [
   '/images/HomepageBackground/HomepageBackground5.png',
 ]
 
+/**
+ * 待办页背景图列表
+ */
 export const todoBackgrounds = [
   '/images/TodoBackground/TodoBackground1.png',
   '/images/TodoBackground/TodoBackground2.png',
@@ -29,6 +45,9 @@ export const todoBackgrounds = [
   '/images/TodoBackground/TodoBackground5.png',
 ]
 
+/**
+ * 基础颜色预设
+ */
 export const presetColors = [
   '#ff0000', // 红
   '#00ff00', // 绿
@@ -43,6 +62,9 @@ export const presetColors = [
 // 兼容性别名
 export const colors = presetColors
 
+/**
+ * 默认分组数据
+ */
 export const presetGroups: Group[] = [
   { id: 'inbox', name: '未分组', color: '#7cc4a3', order: 1 },
   { id: 'work', name: '工作', color: '#a7c8ff', order: 2 },
@@ -51,6 +73,9 @@ export const presetGroups: Group[] = [
   { id: 'shop', name: '购物', color: '#ffb7c5', order: 5 },
 ]
 
+/**
+ * 默认演示任务数据
+ */
 export const defaultTasks: Task[] = [
   {
     id: 't1',

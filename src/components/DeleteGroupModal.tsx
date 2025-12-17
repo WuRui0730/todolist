@@ -1,3 +1,7 @@
+/**
+ * 文件功能：删除分组确认弹窗
+ * 提供删除分组的选项，允许用户选择仅删除分组（保留任务）或完全删除。
+ */
 interface DeleteGroupModalProps {
   isOpen: boolean
   groupName: string
@@ -7,6 +11,12 @@ interface DeleteGroupModalProps {
   onOptionChange: (option: 'move' | 'delete') => void
 }
 
+/**
+ * 删除分组确认弹窗
+ * 提供两种删除模式：
+ * 1. 仅删除分组，任务移入未分组
+ * 2. 完全删除分组及其下所有任务
+ */
 export function DeleteGroupModal({ isOpen, groupName, onCancel, onConfirm, option, onOptionChange }: DeleteGroupModalProps) {
   if (!isOpen) return null
 

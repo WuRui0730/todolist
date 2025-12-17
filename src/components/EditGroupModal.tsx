@@ -1,3 +1,7 @@
+/**
+ * 文件功能：编辑分组弹窗
+ * 专门用于修改现有分组名称和颜色的模态框组件。
+ */
 import { useState, useEffect } from 'react'
 
 interface EditGroupModalProps {
@@ -8,6 +12,10 @@ interface EditGroupModalProps {
   isOpen: boolean
 }
 
+/**
+ * 编辑分组弹窗组件
+ * 允许修改分组名称和颜色，提供预设颜色快速选择
+ */
 export function EditGroupModal({
   groupName,
   groupColor,

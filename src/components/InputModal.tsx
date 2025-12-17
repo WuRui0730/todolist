@@ -1,3 +1,7 @@
+/**
+ * 文件功能：通用输入弹窗
+ * 一个可复用的模态框组件，用于获取用户输入的文本或颜色（如创建新分组时）。
+ */
 import { useState, useEffect } from 'react'
 
 interface InputModalProps {
@@ -12,6 +16,10 @@ interface InputModalProps {
   secondValue?: string  // 用于第二个值（如颜色）
 }
 
+/**
+ * 通用输入弹窗组件
+ * 支持文本输入和颜色选择（用于创建分组等场景）
+ */
 export function InputModal({
   title,
   label,

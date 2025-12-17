@@ -1,3 +1,7 @@
+/**
+ * 文件功能：侧边栏导航组件
+ * 显示应用的主要导航入口（待办、统计、设置、搜索），以及用户头像和退出按钮。
+ */
 import type { Page } from '../types'
 import { iconMap } from '../constants'
 
@@ -9,6 +13,11 @@ type Props = {
   onLogout: () => void
 }
 
+// [PPT Slide 5] 主界面布局 - 左侧固定导航栏
+/**
+ * 侧边栏导航组件
+ * 包含头像（个人页入口）、页面导航（待办、统计、设置）、搜索入口和退出按钮
+ */
 export function Sidebar({ currentUser, page, setPage, onSearch, onLogout }: Props) {
   return (
     <aside className="sidebar">

@@ -1,3 +1,7 @@
+/**
+ * 文件功能：通用确认对话框
+ * 用于执行危险操作（如删除任务、注销账号）前的二次确认提示。
+ */
 import { useEffect } from 'react'
 
 interface ConfirmModalProps {
@@ -11,6 +15,10 @@ interface ConfirmModalProps {
   type?: 'warning' | 'danger' | 'info'
 }
 
+/**
+ * 通用确认对话框组件
+ * 用于执行危险操作前的二次确认
+ */
 export function ConfirmModal({
   title,
   message,

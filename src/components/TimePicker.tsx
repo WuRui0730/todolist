@@ -1,3 +1,7 @@
+/**
+ * 文件功能：时间选择器
+ * 支持时、分、秒选择的组件，用于设置专注时长或提醒时间。
+ */
 import { useState } from 'react'
 
 type TimePickerProps = {
@@ -7,6 +11,10 @@ type TimePickerProps = {
   showSeconds?: boolean
 }
 
+/**
+ * 时间选择器组件
+ * 支持时分秒选择，提供常用时间快捷选项
+ */
 export function TimePicker({ value, onChange, label, showSeconds = false }: TimePickerProps) {
   const [isOpen, setIsOpen] = useState(false)
 

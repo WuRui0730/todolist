@@ -1,3 +1,7 @@
+/**
+ * 文件功能：颜色选择器
+ * 提供预设颜色网格和自定义 HEX 输入，用于设置分组或主题颜色。
+ */
 import { useState } from 'react'
 import { presetColors } from '../constants'
 
@@ -6,6 +10,10 @@ interface ColorPickerProps {
   onColorChange: (color: string) => void
 }
 
+/**
+ * 颜色选择器组件
+ * 提供基础颜色、自定义HEX输入和常用颜色选择
+ */
 export function ColorPicker({ selectedColor, onColorChange }: ColorPickerProps) {
   const [customColor, setCustomColor] = useState('#ff6b6b')
 

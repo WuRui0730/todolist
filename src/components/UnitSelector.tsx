@@ -1,3 +1,7 @@
+/**
+ * 文件功能：单位选择器
+ * 下拉选择组件，用于选择习惯或目标任务的计量单位（如次、分钟）。
+ */
 interface UnitSelectorProps {
   value?: string
   onChange: (unit: string) => void
@@ -5,6 +9,10 @@ interface UnitSelectorProps {
   options?: { value: string; label: string }[]
 }
 
+/**
+ * 单位选择器组件
+ * 用于目标设定中的单位选择（如：次、分钟、小时等）
+ */
 export function UnitSelector({ value, onChange, placeholder, options }: UnitSelectorProps) {
   const defaultOptions = [
     { value: '次', label: '次' },
