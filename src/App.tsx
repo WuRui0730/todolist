@@ -60,7 +60,7 @@ import {
  */
 function App() {
   // 用户相关的state
-  // [PPT Slide 4] 身份认证系统 - 状态管理
+  // 身份认证系统 - 状态管理
   const [users, setUsers] = useState<User[]>([])
   const [mode, setMode] = useState<'login' | 'register'>('login')
   const [currentUser, setCurrentUser] = useState<string | null>(null)
@@ -72,7 +72,7 @@ function App() {
   const [authError, setAuthError] = useState('')
 
   // 分组和任务的数据
-  // [PPT Slide 6] 多维度任务管理 - 任务与分组状态
+  //多维度任务管理 - 任务与分组状态
   const [groups, setGroups] = useState<Group[]>(presetGroups)
   const [tasks, setTasks] = useState<Task[]>(defaultTasks)
   const [trash, setTrash] = useState<TrashItem[]>([])
@@ -85,7 +85,7 @@ function App() {
   const [timeSort, setTimeSort] = useState<'asc' | 'desc'>('asc')
   const [importanceSort, setImportanceSort] = useState<'high' | 'low'>('high')
   const [page, setPage] = useState<Page>('todo')
-  // [PPT Slide 7] 沉浸式专注模式 - 计时器状态
+  //沉浸式专注模式 - 计时器状态
   const [timerTaskId, setTimerTaskId] = useState<string | null>(null)
   const [timerMode, setTimerMode] = useState<'countdown' | 'countup'>('countdown')
   const [timerTotal, setTimerTotal] = useState<number>(25 * 60)
@@ -1547,7 +1547,7 @@ function App() {
 
         {page === 'todo' && (
           <>
-        {/* [PPT Slide 5] 主界面布局 - 中间分组栏 (Group List) */}
+        {/*主界面布局 - 中间分组栏 (Group List) */}
         <div className={`middle ${middleCollapsed ? 'collapsed' : ''}`}>
           <div className="section-header">
             <div className="section-title collapsible" onClick={() => setGroupsCollapsed((v) => !v)}>
@@ -1610,7 +1610,7 @@ function App() {
           </div>
 
             <div className="content">
-              {/* [PPT Slide 5] 主界面布局 - 右侧任务区 (Main Content) */}
+              {/*主界面布局 - 右侧任务区 (Main Content) */}
               <div className="content-header">
                 <div className="header-left">
                   <button className="icon-btn" onClick={() => setMiddleCollapsed((v) => !v)}>
@@ -1984,7 +1984,7 @@ function App() {
 
         {page === 'count' && (
           <div className="content wide">
-            {/* [PPT Slide 9] 数据统计分析 (Dashboard) */}
+            {/*数据统计分析 (Dashboard) */}
             <div className="content-header">
               <div className="section-title" style={{ margin: 0 }}>统计分析</div>
               <div className="muted" style={{ margin: 0 }}>仿 Ant Design Pro Dashboard / 番茄 Todo 样式</div>
@@ -2244,7 +2244,7 @@ function App() {
 
         {page === 'settings' && (
           <div className="content wide">
-            {/* [PPT Slide 10] 个性化设置 - 主题与背景 */}
+            {/*个性化设置 - 主题与背景 */}
             <div className="content-header">
               <div className="section-title" style={{ margin: 0 }}>设置</div>
               <div className="muted" style={{ margin: 0 }}>主题色 / 背景图 / 账户管理</div>
@@ -2399,7 +2399,7 @@ function App() {
               }
             }}
           >
-            {/* [PPT Slide 8] 个人中心 (Profile) - 视差滚动背景与信息展示 */}
+            {/*个人中心 (Profile) - 视差滚动背景与信息展示 */}
             <div className="profile-mask">
               <div
                 className="profile-header"
@@ -2759,7 +2759,7 @@ function App() {
 
         {timerTaskId && (
           <div className="modal-mask" onClick={() => setTimerTaskId(null)}>
-            {/* [PPT Slide 7] 沉浸式专注模式 - 计时器界面 */}
+            {/*沉浸式专注模式 - 计时器界面 */}
             <div className="modal" onClick={(e) => e.stopPropagation()}>
               <h4>专注/计时</h4>
               {(() => {

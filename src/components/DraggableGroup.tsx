@@ -21,8 +21,8 @@ interface DraggableGroupProps {
   onToggleExpand?: () => void
 }
 
-// [PPT Slide 5] 主界面布局 - 中间分组栏 (自定义分组)
-// [PPT Slide 11] 关键技术实现 - 拖拽排序 (Drag & Drop)
+//主界面布局 - 中间分组栏 (自定义分组)
+//关键技术实现 - 拖拽排序 (Drag & Drop)
 /**
  * 可拖拽的分组组件
  * 支持拖拽排序、嵌套、点击选中、右键菜单等交互

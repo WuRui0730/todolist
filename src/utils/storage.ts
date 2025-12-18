@@ -4,8 +4,8 @@
  */
 import type { DataShape, Profile, Settings, User } from '../types'
 
-// [PPT Slide 4] 身份认证系统 - 数据持久化与隔离
-// [PPT Slide 11] 关键技术实现 - LocalStorage 封装
+//身份认证系统 - 数据持久化与隔离
+//关键技术实现 - LocalStorage 封装
 // LocalStorage 键名定义
 const USER_KEY = 'todo-users'
 const CURRENT_KEY = 'todo-current-user'
