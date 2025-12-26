@@ -50,7 +50,7 @@ export function DraggableGroup({
     e.dataTransfer.effectAllowed = 'move'
     e.dataTransfer.setData('text/plain', group.id)
   }
-
+//拖拽排序与嵌套逻辑
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
@@ -66,9 +66,9 @@ export function DraggableGroup({
 
     // 添加对应的提示类
     if (isOnTop) {
-      e.currentTarget.classList.add('drag-over-sort')
+      e.currentTarget.classList.add('drag-over-sort')// 上方排序提示
     } else {
-      e.currentTarget.classList.add('drag-over-nest')
+      e.currentTarget.classList.add('drag-over-nest')// 下方嵌套提示
     }
 
     onDragOver(e)

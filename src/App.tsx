@@ -258,13 +258,13 @@ function App() {
       setTimerRemaining((prev) => {
         if (timerMode === 'countdown') {
           if (prev <= 1) {
-            window.clearInterval(id)
+            window.clearInterval(id) //倒计时结束，清理定时器
             setTimerRunning(false)
 
             // 计算实际专注时间（秒）
             const actualSeconds = totalElapsedSeconds || timerTotal
             const actualMinutes = Math.ceil(actualSeconds / 60)
-
+            // 更新任务状态为完成，并记录专注时间
             setTasks((old) =>
               old.map((t) =>
                 t.id === timerTaskId ? {
@@ -287,13 +287,13 @@ function App() {
             setTimerElapsedSeconds(0)
             return 0
           }
-          return prev - 1
+          return prev - 1 // 每秒减少
         }
-        return prev + 1
+        return prev + 1 // 正计时每秒增加
       })
     }, 1000)
     return () => {
-      window.clearInterval(id)
+      window.clearInterval(id) // 清理定时器
     }
   }, [timerRunning, timerTaskId, timerMode, timerStartTime, timerElapsedSeconds])
 
@@ -392,20 +392,20 @@ function App() {
   }
 
   
-  // 拖拽处理函数
+  // 拖拽处理函数,记录当前拖拽的分组
   const handleDragStart = (group: Group) => {
     setDraggedGroup(group)
   }
 
-  const handleDragOver = (e: React.DragEvent) => {
+  const handleDragOver = (e: React.DragEvent) => {// 允许拖拽操作
     e.preventDefault()
     e.dataTransfer.dropEffect = 'move'
   }
-
-  const handleDrop = (e: React.DragEvent, targetGroup: Group) => {
+//分组拖拽释放处理函数
+  const handleDrop = (e: React.DragEvent, targetGroup: Group) => { 
     e.preventDefault()
     e.stopPropagation()
-
+// 如果没有拖拽的分组，或者拖拽的分组和目标分组是同一个，直接返回
     if (!draggedGroup || draggedGroup.id === targetGroup.id) {
       setDraggedGroup(null)
       setDropTargetGroup(null)
@@ -427,7 +427,6 @@ function App() {
       if (!parent || !parent.parentId) return false
       return wouldCreateCycle(parent.parentId, childId)
     }
-
     // 如果拖拽到自己的后代分组上，不允许
     if (wouldCreateCycle(targetGroup.id, draggedGroup.id)) {
       alert('不能将分组拖拽到其子分组中')
@@ -448,11 +447,11 @@ function App() {
       // 排序逻辑：重新排列order
       const draggedIndex = groups.findIndex(g => g.id === draggedGroup.id)
       const targetIndex = groups.findIndex(g => g.id === targetGroup.id)
-
+      
       if (draggedIndex !== -1 && targetIndex !== -1) {
         const newGroups = [...groups]
 
-        // 如果拖拽到下半部分且目标是顶级分组，可以将拖拽的分组变为顶级分组
+        // 调整parentId以保持同级关系
         let newDraggedGroup = { ...newGroups[draggedIndex] }
         if (!isDroppingOnTop && !targetGroup.parentId) {
           // 拖拽到顶级分组下方，移除parentId，使其成为顶级分组
@@ -477,7 +476,7 @@ function App() {
 
         // 更新拖拽分组的parentId
         removed.parentId = parentId
-
+        // 插入到新位置
         newGroups.splice(insertIndex, 0, removed)
 
         // 重新设置order（只对同级分组）
@@ -493,7 +492,6 @@ function App() {
       // 拖到下半部分，检查是否需要嵌套
       // 如果目标分组没有父分组，可以将拖拽的分组作为其子分组
       // 如果拖拽的分组已经有父分组，可以选择移出或移到新的父分组
-
       // 检查层级限制（最多三级）
       const getDepth = (groupId: string, depth = 1): number => {
         const group = groups.find(g => g.id === groupId)
@@ -1167,6 +1165,7 @@ function App() {
   }, [tasks, selectedDate])
 
   // ECharts 图表配置 - 移到变量定义之后避免 hooks 顺序错误
+  // 专注时长饼图配置
   const focusTimeChartOption = useMemo(() => ({
     tooltip: {
       trigger: 'item',
@@ -1174,8 +1173,8 @@ function App() {
     },
     series: [{
       name: '专注时长',
-      type: 'pie',
-      radius: ['40%', '70%'],
+      type: 'pie', // 饼图
+      radius: ['40%', '70%'],// 内外半径,环形图
       avoidLabelOverlap: false,
       itemStyle: {
         borderRadius: 10,
@@ -1190,7 +1189,7 @@ function App() {
       labelLine: {
         show: false
       },
-      data: getTasksByTimeRange
+      data: getTasksByTimeRange // 仅统计已完成的专注任务
         .filter(t => t.type === 'focus' && t.status === 'done')
         .slice(0, 5)
         .map((t, index) => ({
@@ -1202,7 +1201,7 @@ function App() {
         }))
     }]
   }), [getTasksByTimeRange, statsTimeRange, selectedDate, morandiColors])
-
+// 打断原因饼图配置
   const interruptReasonChartOption = useMemo(() => ({
     tooltip: {
       trigger: 'item',

@@ -29,9 +29,8 @@ export type TaskType = 'focus' | 'habit' | 'goal' | 'task'
  */
 export type Page = 'todo' | 'count' | 'settings' | 'profile'
 
-/**
- * 分组定义
- */
+
+//分组定义
 export type Group = {
   id: string
   name: string
@@ -41,9 +40,7 @@ export type Group = {
   order?: number // 排序权重
 }
 
-/**
- * 任务定义
- */
+//任务定义
 export type Task = {
   id: string
   title: string
